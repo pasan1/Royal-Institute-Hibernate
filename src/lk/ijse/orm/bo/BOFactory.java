@@ -1,6 +1,7 @@
 package lk.ijse.orm.bo;
 
 import lk.ijse.orm.bo.custom.impl.CourseBOImpl;
+import lk.ijse.orm.bo.custom.impl.LoginBOImpl;
 import lk.ijse.orm.bo.custom.impl.RegistrationBOImpl;
 import lk.ijse.orm.bo.custom.impl.StudentBOImpl;
 
@@ -11,7 +12,7 @@ public class BOFactory {
     }
 
     public enum BOType {
-        STUDENT, REGISTRATION, COURSE
+        STUDENT, REGISTRATION, COURSE, LOGIN
     }
 
     public static BOFactory getInstance() {
@@ -26,6 +27,8 @@ public class BOFactory {
                 return (T) new RegistrationBOImpl();
             case COURSE:
                 return (T) new CourseBOImpl();
+            case LOGIN:
+                return (T) new LoginBOImpl();
             default:
                 return null;
         }

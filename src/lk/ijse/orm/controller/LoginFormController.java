@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.orm.bo.BOFactory;
+import lk.ijse.orm.bo.custom.LoginBO;
 
 import java.io.IOException;
 
@@ -27,7 +29,9 @@ public class LoginFormController {
     public TextField txtPassword;
 
     private static String userName = "admin";
-    private static String password = "admin";
+//    private static String password = "admin";
+
+    private LoginBO bo = BOFactory.getInstance().getBO(BOFactory.BOType.LOGIN);
 
     public void initialize(){
         imgEye.setVisible(true);
@@ -35,7 +39,7 @@ public class LoginFormController {
         txtPassword.setVisible(false);
     }
 
-    public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnLoginOnAction(ActionEvent actionEvent) throws Exception {
         String pass = getPass();
         if (isValidated(pass)){
             loadMainForm();
@@ -65,8 +69,8 @@ public class LoginFormController {
             return null;
     }
 
-    private boolean isValidated(String pass) {
-        if (txtUserName.getText().equals(userName) && pass.equals(password)){
+    private boolean isValidated(String pass) throws Exception {
+        if (txtUserName.getText().equals(userName) && pass.equals(bo.getPassFromFile())){
             return true;
         } else {
             return false;
