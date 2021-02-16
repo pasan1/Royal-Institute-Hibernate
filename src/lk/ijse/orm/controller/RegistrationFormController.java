@@ -1,5 +1,6 @@
 package lk.ijse.orm.controller;
 
+import animatefx.animation.FadeInRight;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -68,7 +69,14 @@ public class RegistrationFormController {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-        loadForm("MainForm");
+        loadBackForm();
+    }
+
+    private void loadBackForm() throws IOException {
+        AnchorPane pane = FXMLLoader.load(this.getClass().getResource("../view/StudentForm.fxml"));
+        window.getChildren().clear();
+        window.getChildren().add(pane);
+        new FadeInRight(pane).play();
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) {

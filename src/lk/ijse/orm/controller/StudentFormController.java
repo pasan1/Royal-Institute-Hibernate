@@ -1,5 +1,6 @@
 package lk.ijse.orm.controller;
 
+import animatefx.animation.FadeInRight;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -115,12 +116,12 @@ public class StudentFormController {
 //                    boolean isSaved = bo.saveStudent(student);
                     bo.setStudent(student);
                     bo.setStatus("Save");
-                    loadForm("RegistrationForm");
+                    loadNextForm();
                 } else if (btnNext.getText().equals("Update & Next")) {
 //                    boolean isUpdated = bo.updateStudent(student);
                     bo.setStudent(student);
                     bo.setStatus("Update");
-                    loadForm("RegistrationForm");
+                    loadNextForm();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Submission Failed...").show();
                 }
@@ -259,7 +260,14 @@ public class StudentFormController {
         Stage primaryStage = (Stage) btnExit.getScene().getWindow();
         primaryStage.close();*/
 
-            Stage window = (Stage) this.window.getScene().getWindow();
-            window.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("../view/" + formName + ".fxml"))));
+        Stage window = (Stage) this.window.getScene().getWindow();
+        window.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("../view/" + formName + ".fxml"))));
+    }
+
+    private void loadNextForm() throws IOException {
+            AnchorPane pane = FXMLLoader.load(this.getClass().getResource("../view/RegistrationForm.fxml"));
+            window.getChildren().clear();
+            window.getChildren().add(pane);
+            new FadeInRight(pane).play();
     }
 }
