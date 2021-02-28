@@ -153,20 +153,20 @@ public class StudentFormController {
                         if (cmbGender.getValue() != null) {
                             return true;
                         } else {
-                            txtName.setFocusColor(Paint.valueOf("red"));
-                            txtName.requestFocus();
+                            cmbGender.setFocusColor(Paint.valueOf("red"));
+                            cmbGender.requestFocus();
                         }
                     } else {
-                        txtName.setFocusColor(Paint.valueOf("red"));
-                        txtName.requestFocus();
+                        dpDob.setDefaultColor(Paint.valueOf("red"));
+                        dpDob.requestFocus();
                     }
                 } else {
-                    txtName.setFocusColor(Paint.valueOf("red"));
-                    txtName.requestFocus();
+                    txtContact.setFocusColor(Paint.valueOf("red"));
+                    txtContact.requestFocus();
                 }
             } else {
-                txtName.setFocusColor(Paint.valueOf("red"));
-                txtName.requestFocus();
+                txtAddress.setFocusColor(Paint.valueOf("red"));
+                txtAddress.requestFocus();
             }
         } else {
             txtName.setFocusColor(Paint.valueOf("red"));

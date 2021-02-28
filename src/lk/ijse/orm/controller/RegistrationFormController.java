@@ -131,7 +131,7 @@ public class RegistrationFormController {
         try {
             loadGendersToCmb();
             loadCourseCodesToCmb();
-            btnRegistrationId.setText(bo.getLastRegistrationId());
+            btnRegistrationId.setText(String.valueOf(bo.getLastRegistrationId()+1));
             txtRegistrationDate.setText(String.valueOf(LocalDate.now()));
             loadStudentDetails();
             txtRegistrationFee.setFocusColor(Paint.valueOf("black"));

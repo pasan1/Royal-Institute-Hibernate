@@ -364,14 +364,14 @@ public class RegistrationBOImpl implements RegistrationBO {
     }
 
     @Override
-    public String getLastRegistrationId() throws Exception {
+    public int getLastRegistrationId() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-        studentDAO.setSession(session);
+        registrationDAO.setSession(session);
         Transaction tx = null;
-        String lastId;
+        int lastId;
         try {
             tx = session.beginTransaction();
-            lastId = studentDAO.getLastStudentId();
+            lastId = registrationDAO.getLastRegId();
             tx.commit();
         } catch (Throwable t) {
             tx.rollback();
@@ -380,8 +380,8 @@ public class RegistrationBOImpl implements RegistrationBO {
             session.close();
         }
 
-        if (lastId == null) {
-            return "1";
+        if (lastId == 0) {
+            return 1;
         } else {
 //            int maxId = Integer.parseInt(lastId.replace("", ""));
 //            maxId = maxId + 1;

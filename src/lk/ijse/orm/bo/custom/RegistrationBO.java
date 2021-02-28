@@ -40,7 +40,7 @@ public interface RegistrationBO extends SuperBO {
 
     public ArrayList<RegistrationDTO> getAllRegistration() throws Exception;
 
-    public String getLastRegistrationId() throws Exception;
+    public int getLastRegistrationId() throws Exception;
 
     public RegistrationDTO searchCourse(String id) throws Exception;
 
